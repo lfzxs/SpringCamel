@@ -1,0 +1,113 @@
+plugins {
+    id 'java'
+    id 'war'
+    id 'idea'
+}
+
+group 'cn.histron.basepro'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8   		// 设置 JDK 版本
+webAppDirName = 'src/main/webapp'    	// 设置 WebApp 根目录
+
+sourceSets {
+    // 设置 Java 源码所在目录
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+    // 设置 test 源码所在目录
+    test{
+        java{
+            srcDir 'src/test/java'
+        }
+        resources {
+            srcDir 'src/test/resources'
+        }
+    }
+}
+
+//下载源码
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+
+task showInfo{
+	 println  'buildDir:'+buildDir
+	 println  'projectDir:'+projectDir
+	 println  'rootDir:'+rootDir
+	 
+}
+
+task makeDir(){
+	sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}
+
+// 设置 maven 库地址
+repositories {
+    flatDir {
+        dirs 'lib'
+    }
+    mavenLocal()
+	maven {url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+    maven {url "https://maven.eveoh.nl/content/repositories/releases"}
+    maven { url "https://plugins.gradle.org/m2/" }
+}
+
+dependencies {
+    compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
+    
+
+    // https://mvnrepository.com/artifact/org.apache.camel/camel-core
+    compile group: 'org.apache.camel', name: 'camel-core', version: '3.2.0'
+    // https://mvnrepository.com/artifact/org.apache.camel/camel-spring
+    compile group: 'org.apache.camel', name: 'camel-spring', version: '3.2.0'
+    // https://mvnrepository.com/artifact/org.apache.camel/camel-servlet
+    compile group: 'org.apache.camel', name: 'camel-servlet', version: '3.2.0'
+    compile group: 'org.apache.camel',name: 'camel-stream', version: '3.2.0'
+    compile group: 'org.apache.camel', name: 'camel-http', version: '3.2.0'
+
+    
+    //数据库包	
+//	compile group: 'com.alibaba', name: 'druid', version: '1.1.10'
+//	compile 'commons-dbcp:commons-dbcp:1.4'
+//	compile 'jtds:jtds:1.2'
+//	compile 'mysql:mysql-connector-java:5.1.17'
+//	implementation group: 'org.mybatis', name: 'mybatis-spring', version: '1.1.1'
+    
+    
+    
+//	compile group: 'com.rabbitmq', name: 'amqp-client', version: '4.0.0'
+    // https://mvnrepository.com/artifact/org.springframework/spring-web
+
+    compile group: 'org.springframework', name: 'spring-web', version: '5.2.5.RELEASE'
+
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-beans
+    compile group: 'org.springframework', name: 'spring-beans', version: '5.2.5.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.1'
+
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.1'
+
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.13.1'
+
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+}
+
+
+

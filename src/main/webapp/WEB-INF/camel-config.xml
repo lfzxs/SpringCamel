@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:camel="http://camel.apache.org/schema/spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://camel.apache.org/schema/spring
+                           http://camel.apache.org/schema/spring/camel-spring.xsd
+                           http://www.springframework.org/schema/jdbc
+                           http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+                           http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           				   http://www.springframework.org/schema/jee   
+           				   http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+                           http://activemq.apache.org/schema/core
+                           http://activemq.apache.org/schema/core/activemq-core.xsd
+                           http://camel.apache.org/schema/spring 
+                           http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+
+	<!-- 数据库配置 <jee:jndi-lookup id="dataSource" jndi-name="java:/comp/env/jdbc/dataSource" 
+		/> -->
+
+	<!-- <bean id="messageProcessor" class="com.histron.camel.processor.MessageProcessor"/> -->
+
+
+
+
+
+	<camelContext
+		xmlns="http://camel.apache.org/schema/spring">
+		<propertyPlaceholder id="properties"
+			location="classpath:application.properties" />
+
+
+		<route id="helloRoute">
+			<!-- incoming requests from the servlet is routed -->
+			<from uri="servlet:hello"/>
+			<choice>
+				<when>
+					<!-- is there a header with the key name? -->
+					<header>name</header>
+					<!-- yes so return back a message to the user -->
+					<transform>
+						<simple>Hi I am ${sysenv.HOSTNAME}. Hello ${header.name} how are you today?</simple>
+					</transform>
+				</when>
+				<otherwise>
+					<!-- if no name parameter then output a syntax to the user -->
+					<transform>
+						<constant>Add a name parameter to uri, eg ?name=foo</constant>
+					</transform>
+				</otherwise>
+			</choice>
+		</route>
+
+
+
+
+
+
+
+
+	</camelContext>
+
+</beans>

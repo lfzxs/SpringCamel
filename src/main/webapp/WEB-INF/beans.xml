@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/aop     http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/util    http://www.springframework.org/schema/util/spring-util.xsd
+           http://www.springframework.org/schema/tx      http://www.springframework.org/schema/tx/spring-tx.xsd
+           http://www.springframework.org/schema/jee	 http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+           http://www.springframework.org/schema/util http://localhost:8080/schema/www.springframework.org/schema/util/spring-util.xsd
+           ">
+
+	<!-- 注解支持 -->
+	<context:component-scan
+		base-package="com.histron.camel.*" />
+
+	<!-- <jee:jndi-lookup id="grant_type" jndi-name="java:/comp/env/grant_type"/> 
+		<jee:jndi-lookup id="appid" jndi-name="java:/comp/env/appid"/> <jee:jndi-lookup 
+		id="secret" jndi-name="java:/comp/env/secret"/> <jee:jndi-lookup id="weixin_send" 
+		jndi-name="java:/comp/env/weixin_send"/> <jee:jndi-lookup id="weixin_host" 
+		jndi-name="java:/comp/env/weixin_host"/> <jee:jndi-lookup id="weixin_getopenid" 
+		jndi-name="java:/comp/env/weixin_getopenid"/> <jee:jndi-lookup id="get_accesstoken" 
+		jndi-name="java:/comp/env/get_accesstoken"/> <jee:jndi-lookup id="sms_host" 
+		jndi-name="java:/comp/env/sms_host"/> <jee:jndi-lookup id="sms_send" jndi-name="java:/comp/env/sms_send"/> 
+		<jee:jndi-lookup id="sms_appcode" jndi-name="java:/comp/env/sms_appcode"/> 
+		<jee:jndi-lookup id="rabbit.host" jndi-name="java:/comp/env/rabbit.host"/> 
+		<jee:jndi-lookup id="rabbit.port" jndi-name="java:/comp/env/rabbit.port"/> 
+		<jee:jndi-lookup id="rabbit.user" jndi-name="java:/comp/env/rabbit.user"/> 
+		<jee:jndi-lookup id="rabbit.password" jndi-name="java:/comp/env/rabbit.password"/> 
+		<jee:jndi-lookup id="rabbit.vhost" jndi-name="java:/comp/env/rabbit.vhost"/> -->
+		
+		
+	<!-- 引入properties文件 -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:application.properties</value>
+		</property>
+	</bean>
+
+</beans>

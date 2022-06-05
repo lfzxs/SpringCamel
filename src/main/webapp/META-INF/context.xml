@@ -1,0 +1,44 @@
+<Context>
+
+	<!-- <Environment name="" value="" type="" override=""/> -->
+	
+	<Resource name="jdbc/mailDataSource"
+		factory="com.alibaba.druid.pool.DruidDataSourceFactory"
+		auth="Container" type="javax.sql.DataSource"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		url="jdbc:jtds:sqlserver://192.168.4.81:3433/ZjMall;useUnicode=true;characterEncoding=utf-8"
+		username="bapuser" password="bapuser,,123" maxActive="50"
+		maxWait="10000" removeabandoned="true" removeabandonedtimeout="60"
+		logabandoned="false" validationQuery="SELECT 'x'" filters="stat" />
+	-->
+	<!--  
+	<Resource name="jdbc/mailDataSource"
+		factory="com.alibaba.druid.pool.DruidDataSourceFactory"
+		auth="Container" type="javax.sql.DataSource"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		url="jdbc:jtds:sqlserver://116.62.32.17:1433/FDMall;useUnicode=true;characterEncoding=utf-8"
+		username="runUser" password="gkcity%@*RUN$!.,login" maxActive="50"
+		maxWait="10000" removeabandoned="true" removeabandonedtimeout="60"
+		logabandoned="false" validationQuery="SELECT 'x'" filters="stat" />
+	 -->
+	
+	<!--
+	<Resource name="jdbc/mailDataSource"
+		factory="com.alibaba.druid.pool.DruidDataSourceFactory"
+		auth="Container" type="javax.sql.DataSource"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		url="jdbc:jtds:sqlserver://192.168.4.81:3433/eap;useUnicode=true;characterEncoding=utf-8"
+		username="bapuser" password="bapuser,,123" maxActive="50"
+		maxWait="10000" removeabandoned="true" removeabandonedtimeout="60"
+		logabandoned="false" validationQuery="SELECT 'x'" filters="stat" />
+	-->
+		
+	<Resource name="jdbc/gkCityDataSource"
+		factory="com.alibaba.druid.pool.DruidDataSourceFactory"
+		auth="Container" type="javax.sql.DataSource"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		url="jdbc:jtds:sqlserver://116.62.32.17:1433/FDMall;useUnicode=true;characterEncoding=utf-8"
+		username="runUser" password="gkcity%@*RUN$!,,login" maxActive="50"
+		maxWait="10000" removeabandoned="true" removeabandonedtimeout="60"
+		logabandoned="false" validationQuery="SELECT 'x'" filters="stat" />
+</Context>
